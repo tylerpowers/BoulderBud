@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var climbs = [Climb]()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            Tab("Warmup", systemImage: "figure.strengthtraining.functional") {
+                
+            }
+            Tab("Workout", systemImage: "figure.climbing") {
+                WorkoutView(climbs: $climbs)
+            }
+            Tab("Log", systemImage: "book.pages") {
+                
+            }
         }
-        .padding()
     }
 }
 
