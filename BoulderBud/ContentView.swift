@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var climbs = [Climb]()
+    @State var climbs = ClimbModel.load()
     var body: some View {
         TabView {
             Tab("Warmup", systemImage: "figure.strengthtraining.functional") {
@@ -18,7 +18,7 @@ struct ContentView: View {
                 WorkoutView(climbs: $climbs)
             }
             Tab("Log", systemImage: "book.pages") {
-                
+                LogView(climbs: $climbs)
             }
         }
     }
