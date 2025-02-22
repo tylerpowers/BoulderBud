@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Tab("Warmup", systemImage: "figure.strengthtraining.functional") {
-                
+                WarmupView()
             }
             Tab("Workout", systemImage: "figure.climbing") {
                 WorkoutView(climbs: $climbs)
