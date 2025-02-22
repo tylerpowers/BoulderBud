@@ -31,6 +31,13 @@ struct LogView: View {
                     }.onDelete(perform: removeItems)
                 }
             }
+            .overlay{
+                if climbs.isEmpty {
+                    ContentUnavailableView {
+                        Label("No climbs yet!", systemImage: "book.pages")
+                    }
+                }
+            }
         }
     }
 }
