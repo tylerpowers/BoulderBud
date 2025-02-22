@@ -33,6 +33,7 @@ struct TimerView: View {
 struct ActiveStretchView: View {
     @Binding var stretches: [Stretch]
     @State var timeRemaining: Int
+    @Environment(\.dismiss) var dismiss
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var index: Int
@@ -56,13 +57,21 @@ struct ActiveStretchView: View {
                     .padding()
                 Spacer()
                 HStack {
+                    Button("< Back") {
+                        dismiss()
+                    }
+                    Spacer()
                     NavigationLink(destination: WarmupView().navigationBarBackButtonHidden(true)) {
                         Text("Done")
+                            .padding()
+                            .background(.tint)
+                            .foregroundColor(.white)
+                            .clipShape(Capsule())
                     }
                     if index != stretches.count - 1 {
                         Spacer()
                         NavigationLink(destination: ActiveStretchView(stretches: $stretches, timeRemaining: Int(stretches[index+1].duration), index: index + 1)) {
-                            Text("Next Stretch")
+                            Text("Next >")
                         }
                     }
                 }.padding()

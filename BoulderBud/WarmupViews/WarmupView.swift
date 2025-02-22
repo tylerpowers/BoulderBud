@@ -12,11 +12,11 @@ struct WarmupView: View {
     @State var stretch = Stretch(name: "", desc: "")
     var body: some View {
         VStack {
-            Text("Your Stretches")
-                .font(.system(size: 50, weight: .bold))
-                .padding()
             NavigationStack {
                 VStack {
+                    Text("Your Stretches")
+                        .font(.system(size: 50, weight: .bold))
+                        .padding()
                     List {
                         Text("Today's Stretches:")
                             .fontWeight(.bold)
