@@ -18,7 +18,7 @@ enum Incline: String, CaseIterable, Identifiable, Codable {
     case cave = "Cave"
 }
 
-struct Climb: Identifiable, Codable {
+struct Climb: Identifiable, Codable, Equatable {
     var id = UUID()
     var name: String = ""
     var grade: Int = 0

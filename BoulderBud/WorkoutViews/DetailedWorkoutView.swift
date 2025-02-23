@@ -10,11 +10,13 @@ import SwiftUI
 struct DetailedWorkoutView: View {
     @Binding var climb: Climb
     @State var isEditing: Bool = false
+    @FocusState var isFocused: Bool
     
     var body: some View {
         Form {
             Section("Basic Info") {
                 TextField("Name", text: $climb.name)
+                    .focused($isFocused)
                 Picker("Grade", selection: $climb.grade) {
                     ForEach(0..<11) {
                         Text("V\($0)")
@@ -65,6 +67,7 @@ struct DetailedWorkoutView: View {
             Section {
                 TextField("Notes", text: $climb.description, axis: .vertical)
                     .lineLimit(5, reservesSpace: true)
+                    .focused($isFocused)
             }
         }
     }

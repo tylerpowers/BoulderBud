@@ -10,11 +10,6 @@ import SwiftUI
 struct LogView: View {
     @Binding var climbs: [Climb]
     
-    func removeItems(at offsets: IndexSet) {
-        climbs.remove(atOffsets: offsets)
-        ClimbModel.save(climbs)
-    }
-    
     var body: some View {
         VStack {
             Text("Logged Climbs")
@@ -22,13 +17,18 @@ struct LogView: View {
                 .padding()
             NavigationStack {
                 List {
-                    ForEach(climbs) { climb in
+                    ForEach(climbs.reversed()) { climb in
                         NavigationLink {
                             ClimbReportView(climb: climb)
                         } label: {
                             ClimbReportShortView(climb: climb)
                         }
-                    }.onDelete(perform: removeItems)
+                    }.onDelete { index in
+                        let item = climbs.reversed()[index.first!]
+                        if let n = climbs.firstIndex(of: item) {
+                            climbs.remove(at: n)
+                        }
+                    }
                 }
             }
             .overlay{

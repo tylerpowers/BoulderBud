@@ -35,16 +35,14 @@ struct WorkoutView: View {
                 } else {
                     DetailedWorkoutView(climb: $climb)
                 }
-                NavigationLink(destination: LogView(climbs: $climbs)) {
-                    Button("Save") {
-                        climbs.append(climb)
-                        ClimbModel.save(climbs)
-                        climb = .init()
-                        saved.toggle()
-                    }
-                    .padding()
-                    .buttonStyle(.borderedProminent)
+                Button("Save") {
+                    climbs.append(climb)
+                    ClimbModel.save(climbs)
+                    climb = .init()
+                    saved.toggle()
                 }
+                .padding()
+                .buttonStyle(.borderedProminent)
             }
         }.sheet(isPresented: $saved) {
             Text("Saved!")
