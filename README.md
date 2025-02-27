@@ -1,4 +1,6 @@
-**My submission for the 2025 Swift Student Challenge**
+***My submission for the 2025 Swift Student Challenge***
+
+---
 
 ## BoulderBud is a Bouldering companion app designed for iPhone!
 BoulderBud helps recreational boulderers:
